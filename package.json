@@ -15,5 +15,8 @@
   "bugs": {
     "url": "https://github.com/jessiesiat/hello-gh-packages/issues"
   },
+  "publishConfig": {
+    "@jessiesiat:registry": "https://npm.pkg.github.com"
+  },
   "homepage": "https://github.com/jessiesiat/hello-gh-packages#readme"
 }
