@@ -13,9 +13,11 @@ jobs:
         with:
           script: |
             const fs = require('fs')
+            console.log('github.workspace: ${{ github.workspace }}')
 
-            if (!fs.existsSync('src/test.ts')) {
-              fs.writeFileSync('src/test.ts', 'export default <string[]>[]')
+            if (!fs.existsSync('${{ github.workspace }}/src/test.ts')) {
+              fs.writeFileSync('${{ github.workspace }}/src/test.ts', 'export default <string[]>[]')
             }
-            const content = require('src/test.ts') 
+            
+            const content = require('${{ github.workspace }}/src/test.ts') 
             console.log(content)
