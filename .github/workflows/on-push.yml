@@ -19,5 +19,9 @@ jobs:
             writeStream.write('export default <string[]>[]')
             writeStream.end()
             
-            const data = await fs.readFile('${{ github.workspace }}/src/test.ts');
-            console.log(data.toString());
+            fs.readFile('${{ github.workspace }}/src/test.ts', (err, data) => {
+              if (err) {
+                  throw err;
+              }
+              console.log('data here', data)
+            });
