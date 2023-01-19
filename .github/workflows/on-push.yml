@@ -15,9 +15,9 @@ jobs:
             const fs = require('fs')
             console.log('github.workspace: ${{ github.workspace }}')
 
-            if (!fs.existsSync('${{ github.workspace }}/src/test.ts')) {
-              fs.writeFileSync('${{ github.workspace }}/src/test.ts', 'export default <string[]>[]')
-            }
+            const writeStream = fs.createWriteStream('src/test.ts')
+            writeStream.write('export default <string[]>[]')
+            writeStream.end()
             
-            const content = require('${{ github.workspace }}/src/test.ts') 
-            console.log(content)
+            const data = await fs.readFile('src/test.ts');
+            console.log(data.toString());
