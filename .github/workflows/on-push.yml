@@ -1,0 +1,21 @@
+on: push
+
+jobs:
+  echo-input:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v3
+      - uses: actions/setup-node@v3
+        with:
+          node-version: 18
+      - run: npm ci
+      - uses: actions/github-script@v6
+        with:
+          script: |
+            const fs = require('fs')
+
+            if (!fs.existsSync('src/test.ts')) {
+              fs.writeFileSync('src/test.ts', 'export default <string[]>[]')
+            }
+            const content = require('src/test.ts') 
+            console.log(content)
