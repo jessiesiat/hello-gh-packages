@@ -1,3 +1,7 @@
+import { fooBar  } from "./src/index.js";
+
 export const sayHi = (name) => `Hi ${name}`;
 
-console.log('hello!');
+export { fooBar }
+
+console.log(fooBar())

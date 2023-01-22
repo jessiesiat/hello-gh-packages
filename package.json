@@ -1,7 +1,7 @@
 {
   "name": "@jessiesiat/hello-gh-packages",
   "version": "1.0.1",
-  "description": "",
+  "type": "module",
   "main": "index.js",
   "scripts": {
     "test": "exit 0"
